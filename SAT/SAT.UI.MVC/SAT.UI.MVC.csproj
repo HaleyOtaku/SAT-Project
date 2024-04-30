@@ -8,14 +8,117 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Shared\Original_Layout.cshtml" />
+    <Content Remove="wwwroot\assets\css\animate.css" />
+    <Content Remove="wwwroot\assets\css\flex-slider.css" />
+    <Content Remove="wwwroot\assets\css\fontawesome.css" />
+    <Content Remove="wwwroot\assets\css\owl.css" />
+    <Content Remove="wwwroot\assets\css\templatemo-574-mexant.css" />
+    <Content Remove="wwwroot\assets\images\about-left-image.jpg" />
+    <Content Remove="wwwroot\assets\images\calculator-bg.jpg" />
+    <Content Remove="wwwroot\assets\images\calculator-image.png" />
+    <Content Remove="wwwroot\assets\images\client-01.png" />
+    <Content Remove="wwwroot\assets\images\close.png" />
+    <Content Remove="wwwroot\assets\images\cta-bg.jpg" />
+    <Content Remove="wwwroot\assets\images\heading-bg.jpg" />
+    <Content Remove="wwwroot\assets\images\loading.gif" />
+    <Content Remove="wwwroot\assets\images\logo.png" />
+    <Content Remove="wwwroot\assets\images\next.png" />
+    <Content Remove="wwwroot\assets\images\prev.png" />
+    <Content Remove="wwwroot\assets\images\service-details-01.jpg" />
+    <Content Remove="wwwroot\assets\images\service-details-02.jpg" />
+    <Content Remove="wwwroot\assets\images\service-details-03.jpg" />
+    <Content Remove="wwwroot\assets\images\service-image-01.jpg" />
+    <Content Remove="wwwroot\assets\images\service-image-02.jpg" />
+    <Content Remove="wwwroot\assets\images\service-image-03.jpg" />
+    <Content Remove="wwwroot\assets\images\slide-01.jpg" />
+    <Content Remove="wwwroot\assets\images\slide-02.jpg" />
+    <Content Remove="wwwroot\assets\images\slide-03.jpg" />
+    <Content Remove="wwwroot\assets\images\testimonials-01.jpg" />
+    <Content Remove="wwwroot\assets\js\custom.js" />
+    <Content Remove="wwwroot\assets\js\isotope.js" />
+    <Content Remove="wwwroot\assets\js\isotope.min.js" />
+    <Content Remove="wwwroot\assets\js\owl-carousel.js" />
+    <Content Remove="wwwroot\assets\js\swiper.js" />
+    <Content Remove="wwwroot\assets\js\tabs.js" />
+    <Content Remove="wwwroot\assets\js\video.js" />
+    <Content Remove="wwwroot\assets\webfonts\fa-brands-400.ttf" />
+    <Content Remove="wwwroot\assets\webfonts\fa-brands-400.woff2" />
+    <Content Remove="wwwroot\assets\webfonts\fa-regular-400.ttf" />
+    <Content Remove="wwwroot\assets\webfonts\fa-regular-400.woff2" />
+    <Content Remove="wwwroot\assets\webfonts\fa-solid-900.ttf" />
+    <Content Remove="wwwroot\assets\webfonts\fa-solid-900.woff2" />
+    <Content Remove="wwwroot\assets\webfonts\fa-v4compatibility.ttf" />
+    <Content Remove="wwwroot\assets\webfonts\fa-v4compatibility.woff2" />
+    <Content Remove="wwwroot\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\vendor\jquery\jquery.js" />
+    <Content Remove="wwwroot\vendor\jquery\jquery.min.js" />
+    <Content Remove="wwwroot\vendor\jquery\jquery.min.map" />
+    <Content Remove="wwwroot\vendor\jquery\jquery.slim.js" />
+    <Content Remove="wwwroot\vendor\jquery\jquery.slim.min.js" />
+    <Content Remove="wwwroot\vendor\jquery\jquery.slim.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\Original_Layout.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
+    <None Include="wwwroot\assets\css\animate.css" />
+    <None Include="wwwroot\assets\css\flex-slider.css" />
+    <None Include="wwwroot\assets\css\fontawesome.css" />
+    <None Include="wwwroot\assets\css\owl.css" />
+    <None Include="wwwroot\assets\css\templatemo-574-mexant.css" />
+    <None Include="wwwroot\assets\images\about-left-image.jpg" />
+    <None Include="wwwroot\assets\images\calculator-bg.jpg" />
+    <None Include="wwwroot\assets\images\calculator-image.png" />
+    <None Include="wwwroot\assets\images\client-01.png" />
+    <None Include="wwwroot\assets\images\close.png" />
+    <None Include="wwwroot\assets\images\cta-bg.jpg" />
+    <None Include="wwwroot\assets\images\heading-bg.jpg" />
+    <None Include="wwwroot\assets\images\loading.gif" />
+    <None Include="wwwroot\assets\images\logo.png" />
+    <None Include="wwwroot\assets\images\next.png" />
+    <None Include="wwwroot\assets\images\prev.png" />
+    <None Include="wwwroot\assets\images\service-details-01.jpg" />
+    <None Include="wwwroot\assets\images\service-details-02.jpg" />
+    <None Include="wwwroot\assets\images\service-details-03.jpg" />
+    <None Include="wwwroot\assets\images\service-image-01.jpg" />
+    <None Include="wwwroot\assets\images\service-image-02.jpg" />
+    <None Include="wwwroot\assets\images\service-image-03.jpg" />
+    <None Include="wwwroot\assets\images\slide-01.jpg" />
+    <None Include="wwwroot\assets\images\slide-02.jpg" />
+    <None Include="wwwroot\assets\images\slide-03.jpg" />
+    <None Include="wwwroot\assets\images\testimonials-01.jpg" />
+    <None Include="wwwroot\assets\js\custom.js" />
+    <None Include="wwwroot\assets\js\isotope.js" />
+    <None Include="wwwroot\assets\js\isotope.min.js" />
+    <None Include="wwwroot\assets\js\owl-carousel.js" />
+    <None Include="wwwroot\assets\js\swiper.js" />
+    <None Include="wwwroot\assets\js\tabs.js" />
+    <None Include="wwwroot\assets\js\video.js" />
+    <None Include="wwwroot\assets\webfonts\fa-brands-400.ttf" />
+    <None Include="wwwroot\assets\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\assets\webfonts\fa-regular-400.ttf" />
+    <None Include="wwwroot\assets\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\assets\webfonts\fa-solid-900.ttf" />
+    <None Include="wwwroot\assets\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\assets\webfonts\fa-v4compatibility.ttf" />
+    <None Include="wwwroot\assets\webfonts\fa-v4compatibility.woff2" />
+    <None Include="wwwroot\vendor\bootstrap\css\bootstrap.min.css" />
+    <None Include="wwwroot\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\vendor\jquery\jquery.js" />
+    <None Include="wwwroot\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\vendor\jquery\jquery.min.map" />
+    <None Include="wwwroot\vendor\jquery\jquery.slim.js" />
+    <None Include="wwwroot\vendor\jquery\jquery.slim.min.js" />
+    <None Include="wwwroot\vendor\jquery\jquery.slim.min.map" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +132,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SAT.DATA.EF\SAT.DATA.EF.csproj" />
   </ItemGroup>
 
 </Project>
