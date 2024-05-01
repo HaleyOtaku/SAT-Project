@@ -48,7 +48,7 @@ https://templatemo.com/tm-574-mexant
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="@Url.Action("Index", "Home")" class="">Home</a></li>
                           <li class="scroll-to-section"><a href="@Url.Action("Index", "Courses")">Courses</a></li>
-                          <li class="scroll-to-section"><a href="@Url.Action("Index", "Students")">Students</a></li>
+                            @if(User.IsInRole("Admin")){<li class="scroll-to-section"><a href="@Url.Action("Index", "Students")">Students</a></li>}
                             <li class="scroll-to-section"><a href="@Url.Action("Index", "Enrollments")">Enrollments</a></li>
                           <li class="has-sub">
                               <a href="javascript:void(0)">Account</a>
@@ -59,7 +59,15 @@ https://templatemo.com/tm-574-mexant
                               </ul>
                           </li>
                           <li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-                          <li><a href="contact-us.html">Contact Support</a></li> 
+                          <li><a href="contact-us.html">Contact Support</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <ul class="dropdown-menu">
+                                    <li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
+                                    <li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
+                                       
+                                </ul>
+                            }
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>
