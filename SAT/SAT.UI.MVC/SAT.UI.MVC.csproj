@@ -71,6 +71,8 @@
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
     <None Include="wwwroot\assets\css\animate.css" />
+    <None Include="wwwroot\assets\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\css\bootstrap.min.css.map" />
     <None Include="wwwroot\assets\css\flex-slider.css" />
     <None Include="wwwroot\assets\css\fontawesome.css" />
     <None Include="wwwroot\assets\css\owl.css" />

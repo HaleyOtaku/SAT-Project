@@ -12,7 +12,7 @@
     <title>Mexant - Financial HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
@@ -40,19 +40,20 @@ https://templatemo.com/tm-574-mexant
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="index.html" class="logo">
+                      @* <a href="index.html" class="logo">
                           <img src="assets/images/logo.png" alt="">
-                      </a>
+                      </a> *@
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                          <li class="scroll-to-section"><a href="#services">Services</a></li>
-                          <li class="scroll-to-section"><a href="#about">About</a></li>
+                          <li class="scroll-to-section"><a href="@Url.Action("Index", "Home")" class="">Home</a></li>
+                          <li class="scroll-to-section"><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                          <li class="scroll-to-section"><a href="@Url.Action("Index", "Students")">Students</a></li>
+                            <li class="scroll-to-section"><a href="@Url.Action("Index", "Enrollments")">Enrollments</a></li>
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Pages</a>
+                              <a href="javascript:void(0)">Account</a>
                               <ul class="sub-menu">
-                                  <li><a href="about-us.html">About Us</a></li>
+                                  <li><a href="about-us.html">Login</a></li>
                                   <li><a href="our-services.html">Our Services</a></li>
                                   <li><a href="contact-us.html">Contact Us</a></li>
                               </ul>
@@ -90,12 +91,10 @@ https://templatemo.com/tm-574-mexant
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="~/assets/js/isotope.min.js"></script>
     <script src="~/assets/js/owl-carousel.js"></script>
 
     <script src="~/assets/js/tabs.js"></script>
     <script src="~/assets/js/swiper.js"></script>
-    <script src="~/assets/js/custom.js"></script>
     <script>
         var interleaveOffset = 0.5;
 
@@ -140,5 +139,8 @@ https://templatemo.com/tm-574-mexant
 
       var swiper = new Swiper(".swiper-container", swiperOptions);
     </script>
+
+    @RenderSection("scripts", false)
+
   </body>
 </html>
