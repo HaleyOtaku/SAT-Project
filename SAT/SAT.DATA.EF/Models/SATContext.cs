@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SAT.DATA.EF.Models
 {
-    public partial class GadgetStoreContext : DbContext
+    public partial class SATContext : DbContext
     {
-        public GadgetStoreContext()
+        public SATContext()
         {
         }
 
-        public GadgetStoreContext(DbContextOptions<GadgetStoreContext> options)
+        public SATContext(DbContextOptions<SATContext> options)
             : base(options)
         {
         }
@@ -22,20 +22,19 @@ namespace SAT.DATA.EF.Models
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; } = null!;
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; } = null!;
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
-        public virtual DbSet<Category> Categories { get; set; } = null!;
-        public virtual DbSet<Order> Orders { get; set; } = null!;
-        public virtual DbSet<OrderProduct> OrderProducts { get; set; } = null!;
-        public virtual DbSet<Product> Products { get; set; } = null!;
-        public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
-        public virtual DbSet<UserDetail> UserDetails { get; set; } = null!;
-        public virtual DbSet<VwGadgetsOverview> VwGadgetsOverviews { get; set; } = null!;
+        public virtual DbSet<Course> Courses { get; set; } = null!;
+        public virtual DbSet<Enrollment> Enrollments { get; set; } = null!;
+        public virtual DbSet<ScheduledClass> ScheduledClasses { get; set; } = null!;
+        public virtual DbSet<ScheduledClassStatus> ScheduledClassStatuses { get; set; } = null!;
+        public virtual DbSet<Student> Students { get; set; } = null!;
+        public virtual DbSet<StudentStatus> StudentStatuses { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=GadgetStore;Trusted_Connection=true;Encrypt=false;MultipleActiveResultSets=true;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=SAT;Trusted_Connection=true;Encrypt=false;MultipleActiveResultSets=true;");
             }
         }
 
@@ -130,178 +129,148 @@ namespace SAT.DATA.EF.Models
                     .HasForeignKey(d => d.UserId);
             });
 
-            modelBuilder.Entity<Category>(entity =>
+            modelBuilder.Entity<Course>(entity =>
             {
-                entity.Property(e => e.CategoryDescription)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
+                entity.Property(e => e.CourseDescription).IsUnicode(false);
 
-                entity.Property(e => e.CategoryName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Order>(entity =>
-            {
-                entity.Property(e => e.OrderDate).HasColumnType("datetime");
-
-                entity.Property(e => e.ShipCity)
+                entity.Property(e => e.CourseName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ShipState)
-                    .HasMaxLength(2)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
-                entity.Property(e => e.ShipToName)
-                    .HasMaxLength(100)
+                entity.Property(e => e.Curriculum)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ShipZip)
-                    .HasMaxLength(5)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
-                entity.Property(e => e.UserId).HasMaxLength(128);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Orders_UserDetails");
-            });
-
-            modelBuilder.Entity<OrderProduct>(entity =>
-            {
-                entity.Property(e => e.ProductPrice).HasColumnType("money");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderProducts)
-                    .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_OrderProducts_Orders");
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderProducts)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_OrderProducts_Products");
-            });
-
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.Property(e => e.ProductDescription)
+                entity.Property(e => e.Notes)
                     .HasMaxLength(500)
                     .IsUnicode(false);
-
-                entity.Property(e => e.ProductImage)
-                    .HasMaxLength(75)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ProductName)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ProductPrice).HasColumnType("money");
-
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Products_Categories");
-
-                entity.HasOne(d => d.Supplier)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.SupplierId)
-                    .HasConstraintName("FK_Products_Suppliers");
             });
 
-            modelBuilder.Entity<Supplier>(entity =>
+            modelBuilder.Entity<Enrollment>(entity =>
+            {
+                entity.Property(e => e.EnrollmentDate).HasColumnType("date");
+
+                entity.HasOne(d => d.ScheduledClass)
+                    .WithMany(p => p.Enrollments)
+                    .HasForeignKey(d => d.ScheduledClassId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Enrollments_ScheduledClasses");
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.Enrollments)
+                    .HasForeignKey(d => d.StudentId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Enrollments_Students");
+            });
+
+            modelBuilder.Entity<ScheduledClass>(entity =>
+            {
+                entity.Property(e => e.EndDate).HasColumnType("date");
+
+                entity.Property(e => e.InstructorName)
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Location)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Scsid).HasColumnName("SCSID");
+
+                entity.Property(e => e.StartDate).HasColumnType("date");
+
+                entity.HasOne(d => d.Course)
+                    .WithMany(p => p.ScheduledClasses)
+                    .HasForeignKey(d => d.CourseId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ScheduledClasses_Courses");
+
+                entity.HasOne(d => d.Scs)
+                    .WithMany(p => p.ScheduledClasses)
+                    .HasForeignKey(d => d.Scsid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ScheduledClasses_ScheduledClassStatuses");
+            });
+
+            modelBuilder.Entity<ScheduledClassStatus>(entity =>
+            {
+                entity.HasKey(e => e.Scsid);
+
+                entity.Property(e => e.Scsid).HasColumnName("SCSID");
+
+                entity.Property(e => e.ScsName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("scsName");
+            });
+
+            modelBuilder.Entity<Student>(entity =>
             {
                 entity.Property(e => e.Address)
-                    .HasMaxLength(150)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.City)
-                    .HasMaxLength(100)
+                    .HasMaxLength(25)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(24)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.State)
-                    .HasMaxLength(2)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
-                entity.Property(e => e.SupplierName)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Zip)
-                    .HasMaxLength(5)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-            });
-
-            modelBuilder.Entity<UserDetail>(entity =>
-            {
-                entity.HasKey(e => e.UserId);
-
-                entity.Property(e => e.UserId).HasMaxLength(128);
-
-                entity.Property(e => e.Address)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.City)
-                    .HasMaxLength(50)
+                entity.Property(e => e.Email)
+                    .HasMaxLength(60)
                     .IsUnicode(false);
 
                 entity.Property(e => e.FirstName)
-                    .HasMaxLength(50)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.LastName)
-                    .HasMaxLength(50)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Major)
+                    .HasMaxLength(15)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Phone)
-                    .HasMaxLength(24)
+                    .HasMaxLength(13)
                     .IsUnicode(false);
+
+                entity.Property(e => e.PhotoUrl)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ssid).HasColumnName("SSID");
 
                 entity.Property(e => e.State)
                     .HasMaxLength(2)
                     .IsUnicode(false)
                     .IsFixedLength();
 
-                entity.Property(e => e.Zip)
-                    .HasMaxLength(5)
-                    .IsUnicode(false)
-                    .IsFixedLength();
+                entity.Property(e => e.ZipCode)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Ss)
+                    .WithMany(p => p.Students)
+                    .HasForeignKey(d => d.Ssid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Students_StudentStatuses");
             });
 
-            modelBuilder.Entity<VwGadgetsOverview>(entity =>
+            modelBuilder.Entity<StudentStatus>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Ssid);
 
-                entity.ToView("vwGadgetsOverview");
+                entity.Property(e => e.Ssid).HasColumnName("SSID");
 
-                entity.Property(e => e.CategoryName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Ssdescription)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("SSDescription");
 
-                entity.Property(e => e.ProductName)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ProductPrice).HasColumnType("money");
-
-                entity.Property(e => e.SupplierName)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.Ssname)
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("SSName");
             });
 
             OnModelCreatingPartial(modelBuilder);
