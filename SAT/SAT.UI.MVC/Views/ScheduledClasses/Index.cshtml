@@ -35,9 +35,9 @@
                                         <div>
                                             <div class="main-list">
                                                 <span class="title">Course</span>
-                                                <span class="title">Start Date</span>
-                                                <span class="title">End Date</span>
+                                                <span class="title">Start/End Date</span>
                                                 <span class="title">Status</span>
+                                                <span class="title">Actions</span>
                                                 @* <span class="title">Actions</span> *@
                                             </div>
                                             @foreach (var item in Model)
@@ -45,14 +45,13 @@
                                                 <a asp-action="Details" asp-route-id="@item.ScheduledClassId">
                                                     <div class="list-item" id="row">
                                                         <span class="item item-title">@Html.DisplayFor(modelItem => item.Course.CourseName)</span>
-                                                        <span class="item">@Html.DisplayFor(modelItem => item.StartDate)</span>
-                                                        <span class="item">@Html.DisplayFor(modelItem => item.EndDate)</span>
+                                                        <span class="item">@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)</span>
                                                         <span class="item">@Html.DisplayFor(modelItem => item.Scs.ScsName)</span>
-                                                        @* <a asp-action="Details" asp-route-id="@item.CourseId" class="item btn" id="details-btn" style="background-color:#43ba7f;color:white;">Details</a> *@
+                                                        <a asp-action="Details" asp-route-id="@item.CourseId" class="item btn" id="details-btn" style="background-color:#43ba7f;color:white;">Details</a>
                                                         @if (User.IsInRole("Admin"))
                                                         {
-                                                            @* <a asp-action="Edit" asp-route-id="@item.CourseId" class="item btn" style="background-color:#43ba7f;color:white;">Edit</a>
-                                                            <a asp-action="Delete" asp-route-id="@item.CourseId" class="item btn btn-danger">Delete</a> *@
+                                                            <a asp-action="Edit" asp-route-id="@item.CourseId" class="item btn" style="background-color:#43ba7f;color:white;">Edit</a>
+                                                            <a asp-action="Delete" asp-route-id="@item.CourseId" class="item btn btn-danger">Delete</a>
                                                         }
                                                     </div>
                                                 </a>
