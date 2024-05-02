@@ -59,15 +59,12 @@ https://templatemo.com/tm-574-mexant
                               <a href="javascript:void(0)">Account</a>
                               <ul class="sub-menu">
                                     <li><a href="~/Identity/Account/Login">Login</a></li>
-                                  <li><a href="our-services.html">Our Services</a></li>
                                   <li><a href="contact-us.html">Contact Us</a></li>
                               </ul>
                           </li>
-                          <li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-                          <li><a href="contact-us.html">Contact Support</a></li>
                             @if (User.IsInRole("Admin"))
                             {
-                                <ul class="dropdown-menu">
+                                <ul class="sub-menu">
                                     <li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
                                     <li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
                                        
