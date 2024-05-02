@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+<!DOCTYPE html>
 <html lang="en">
     
   <head>
@@ -9,7 +12,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Mexant - Financial HTML5 Template</title>
+    <title>SAT - @ViewData["Title"]</title>
 
     <!-- Bootstrap core CSS -->
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -53,23 +56,34 @@ https://templatemo.com/tm-574-mexant
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="@Url.Action("Index", "Home")" class="">Home</a></li>
                           <li class="scroll-to-section"><a href="@Url.Action("Index", "Courses")">Courses</a></li>
+                          <li class="scroll-to-section"><a href="@Url.Action("Index", "ScheduledClasses")">Classes</a></li>
                             @if(User.IsInRole("Admin")){<li class="scroll-to-section"><a href="@Url.Action("Index", "Students")">Students</a></li>}
                             <li class="scroll-to-section"><a href="@Url.Action("Index", "Enrollments")">Enrollments</a></li>
                           <li class="has-sub">
                               <a href="javascript:void(0)">Account</a>
                               <ul class="sub-menu">
-                                    <li><a href="~/Identity/Account/Login">Login</a></li>
-                                  <li><a href="contact-us.html">Contact Us</a></li>
+                                    @if (!signInManager.IsSignedIn(User))
+                                    {
+                                        <li><a href="~/Identity/Account/Login">Login</a></li>
+                                    }
+                                    @if (signInManager.IsSignedIn(User))
+                                    {
+                                        <li><a href="~/Identity/Account/Logout">Logout</a></li>
+                                    }
+                                    
                               </ul>
-                          </li>
                             @if (User.IsInRole("Admin"))
                             {
-                                <ul class="sub-menu">
-                                    <li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
-                                    <li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
-                                       
-                                </ul>
+                            <li class="has-sub">
+                              <a href="#">Admin</a>
+                              <ul class="sub-menu">
+                                <li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
+                                <li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
+                              </ul>
+                            </li>
                             }
+                            <li><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                          </li>
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>

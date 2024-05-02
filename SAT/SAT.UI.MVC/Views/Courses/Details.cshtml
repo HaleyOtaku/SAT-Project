@@ -1,7 +1,7 @@
 ﻿@model SAT.DATA.EF.Models.Course
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @Model.CourseName;
 }
 
 @* <h1>Details</h1> *@
@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="header-text">
-                    <h2>About Us</h2>
+                    <h2>@Model.CourseName</h2>
                     <div class="div-dec"></div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
 
 <!-- ***** Main Banner Area End ***** -->
 
-<section class="top-section">
+@* <section class="top-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -134,51 +134,56 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 
 <div class="container">
-    <h4>Course</h4>
+    <h4 class="mt-4">Course - @Model.CourseName</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 mb-2">
             @Html.DisplayNameFor(model => model.CourseName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 mb-2">
             @Html.DisplayFor(model => model.CourseName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 mb-2">
             @Html.DisplayNameFor(model => model.CourseDescription)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 mb-2">
             @Html.DisplayFor(model => model.CourseDescription)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 mb-2">
             @Html.DisplayNameFor(model => model.CreditHours)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 mb-2">
             @Html.DisplayFor(model => model.CreditHours)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 mb-2">
             @Html.DisplayNameFor(model => model.Curriculum)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 mb-2">
             @Html.DisplayFor(model => model.Curriculum)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 mb-2">
             @Html.DisplayNameFor(model => model.Notes)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 mb-2">
             @Html.DisplayFor(model => model.Notes)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 mb-2">
             @Html.DisplayNameFor(model => model.IsActive)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 mb-4">
             @Html.DisplayFor(model => model.IsActive)
         </dd>
+        <dt class="col-sm-4 mb-4">
+            @if (User.IsInRole("Admin"))
+            {<a asp-action="Edit" asp-route-id="@Model?.CourseId" class="btn btn-primary">Edit</a>}
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </dt>
     </dl>
 </div>
-<div>
+@* <div class="ml-4">
     <a asp-action="Edit" asp-route-id="@Model?.CourseId">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
