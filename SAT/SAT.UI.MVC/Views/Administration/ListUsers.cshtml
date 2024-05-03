@@ -7,19 +7,19 @@
 }
 
 
-<h1 style="margin-left:25px">All Users</h1>
+<h1 class="ms-4" style="margin-top:100px">All Users</h1>
 
-<section class="col-md-6" style="margin-left:25px">
+<section class="col-md-6 m-4">
 
     @if (Model.Any())
     {
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary mb-3" style="width:99vw">
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary mb-3">
             Add new user
         </a>
 
         foreach (var user in Model)
         {
-            <div class="card mb-3" style="margin-left:10px">
+            <div class="card mb-3">
                 <div class="card-header">
                     User Id : @user.Id
                 </div>
@@ -64,11 +64,11 @@
 
 </section>
 
-<section class="col-md-6" style="margin-left:25px; margin-bottom:25px">
+<section class="col-md-6 m-4">
 
     @if (Model.Any())
     {
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary mb-3" style="width:99vw">
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary mb-3">
             Add new user
         </a>
 

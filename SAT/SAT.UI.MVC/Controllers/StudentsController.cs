@@ -27,6 +27,8 @@ namespace SAT.UI.MVC.Controllers
             return View(await sATContext.ToListAsync());
         }
 
+
+        
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {

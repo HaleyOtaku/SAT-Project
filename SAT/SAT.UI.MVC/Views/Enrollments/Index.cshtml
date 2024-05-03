@@ -47,19 +47,20 @@
                                             </div>
                                             @foreach (var item in Model)
                                             {
-                                             <a asp-action="Details" asp-route-id="@item.EnrollmentId">
-                                                    <div class="list-item" id="row">
+                                                <div class="list-item" id="row">
+                                                    <a asp-action="Details" asp-route-id="@item.EnrollmentId">
                                                         <span class="item item-title">@Html.DisplayFor(modelItem =>
                                                             item.Student.FirstName) @Html.DisplayFor(modelItem => 
                                                             item.Student.LastName)</span>
 
 
-                                                        <span class="item">@Html.DisplayFor(modelItem =>
-                                                                     item.ScheduledClass.Course.CourseName)
-                                                        </span>
+                                                      <span
+                                                      class="item">@item.ScheduledClass.Course.CourseName
+                                                      </span>
 
                                                         <span class="item">@Html.DisplayFor(modelItem => item.EnrollmentDate)
                                                         </span>
+                                                </a>
 
 
                                                         <a asp-action="Details" asp-route-id="@item.EnrollmentId" 
@@ -75,8 +76,8 @@
                                                             <a asp-action="Delete" asp-route-id="@item.EnrollmentId"
                                                             class="item btn btn-danger">Delete</a>
                                                         }
-                                                    </div>
-                                                </a>
+                                                </div>
+                                                
                                             }
                                         </div>
                                     </li>
