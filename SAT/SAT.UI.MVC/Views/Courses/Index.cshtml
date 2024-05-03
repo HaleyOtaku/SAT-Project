@@ -42,7 +42,7 @@
                                             <div class="main-list">
                                                 <span class="title">Course</span>
                                                 <span class="title">Course Hours</span>
-                                                <span class="title">Deadline</span>
+                                                <span class="title">Is Active?</span>
                                                 <span class="title">Actions</span>
                                             </div>
                                             @foreach (var item in Model) {
@@ -50,7 +50,7 @@
                                                 <div class="list-item" id="row">
                                                     <span class="item item-title">@Html.DisplayFor(modelItem => item.CourseName)</span>
                                                     <span class="item">@Html.DisplayFor(modelItem => item.CreditHours)</span>
-                                                <span class="item">2022 Dec 12</span>
+                                                        <span class="item">@Html.DisplayFor(modelItem => item.IsActive)</span>
                                                     <a asp-action="Details" asp-route-id="@item.CourseId" class="item btn" id="details-btn" style="background-color:#43ba7f;color:white;">Details</a>
                                                     @if (User.IsInRole("Admin"))
                                                         {
