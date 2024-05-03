@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SAT.DATA.EF.Models.Enrollment>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Enrollments";
 }
 
 @* <h1>Index</h1>
@@ -19,7 +19,7 @@
                     <h4 class="mb-2">@ViewData["Title"]</h4>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-action="Create" class="btn btn-primary">Add New Course</a>
+                        <a asp-action="Create" class="btn btn-primary">Add New Enrollment</a>
                     }
 
                 </div>
@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="menu">
-                                    <div class="active gradient-border"><span>Courses</span></div>
+                                    <div class="active gradient-border"><span>Enrollments</span></div>
                                     @* <div class="gradient-border"><span>Dates</span></div>
                                     <div class="gradient-border"><span>Web Coding</span></div> *@
                                 </div>
@@ -89,7 +89,7 @@
         </div>
     </div>
 </section>
-
+@* 
 <table class="table">
     <thead>
         <tr>
@@ -122,7 +122,7 @@
                 <a asp-action="Details" asp-route-id="@item.EnrollmentId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
             </td>
-        </tr>
-}
+        </tr> *@
+@* }
     </tbody>
-</table>
+</table> *@

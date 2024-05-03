@@ -40,10 +40,10 @@
                                     <li class="active">
                                         <div>
                                             <div class="main-list">
-                                                <span class="title">Course Name</span>
+                                                <span class="title">Course</span>
                                                 <span class="title">Course Hours</span>
                                                 <span class="title">Deadline</span>
-                                                <span class="title">Client</span>
+                                                <span class="title">Actions</span>
                                             </div>
                                             @foreach (var item in Model) {
                                             <a asp-action="Details" asp-route-id="@item.CourseId">
@@ -80,7 +80,7 @@
                                             </div> *@
                                         </div>
                                     </li>
-                                    <li>
+                                    @* <li>
                                         <div>
                                             <div class="main-list">
                                                 <span class="title">Project Title</span>
@@ -146,7 +146,7 @@
                                                 <span class="item">Multimedia</span>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> *@
                                 </ul>
                             </div>
                         </div>
